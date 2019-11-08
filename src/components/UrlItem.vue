@@ -8,7 +8,7 @@
             </a>
             <br />
             <a :href="href" class="is-small" target="_blank">
-                <small>{{ href }}</small>
+                <small>{{ href | truncate }}</small>
             </a>
             <br />
             <span>
@@ -45,6 +45,15 @@ export default {
             type: String,
             default: '',
         },
+    },
+    filters: {
+        truncate (value, length = 60) {
+            if (value.length > length) {
+                const truncate = value.substring(0, length)
+                return `${truncate}...`;
+             }
+             return value
+        }
     },
     computed: {
         shortLink () {
