@@ -34,6 +34,8 @@ export default new Vuex.Store({
                     ...item,
                     title: item.ogTags.ogTitle || item.url,
                     href: item.url,
+                    description: item.ogTags.ogDescription || '',
+                    createdAt: item.created_at,
                 }))
                 .sort((a, b) => {
                     const aTime = (new Date(a.created_at)).getTime ()
