@@ -14,7 +14,6 @@ export default new Vuex.Store({
     },
     mutations: {
         storeUrls (state, items) {
-            console.log(items)
             state.items = items
         }
     },
