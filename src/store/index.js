@@ -30,11 +30,17 @@ export default new Vuex.Store({
     },
     getters: {
         mappedItems (state) {
-            return state.items.map(item => ({
-                ...item,
-                title: item.ogTags.ogTitle || item.url,
-                href: item.url,
-            }))
+            return state.items
+                .map(item => ({
+                    ...item,
+                    title: item.ogTags.ogTitle || item.url,
+                    href: item.url,
+                }))
+                .sort((a, b) => {
+                    const aTime = (new Date(a.created_at)).getTime ()
+                    const bTime = (new Date(b.created_at)).getTime ()
+                    return bTime - aTime
+                })
         }
     },
 })
